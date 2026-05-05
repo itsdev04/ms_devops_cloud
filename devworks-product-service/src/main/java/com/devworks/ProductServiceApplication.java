@@ -6,11 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ProductServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProductServiceApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(ProductServiceApplication.class, args);
+  }
 }
 
-//brew services restart postgresql@15
-//createdb product_service
+// brew services restart postgresql@15
+// createdb product_service
+
+// mvn spotless:apply - for code formatting

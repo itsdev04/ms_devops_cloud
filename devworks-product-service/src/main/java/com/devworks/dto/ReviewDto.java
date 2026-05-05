@@ -14,17 +14,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewDto {
-    private Long id;
+  private Long id;
 
-    @NotBlank(message = "title is required")
-    private String title;
+  @NotBlank(message = "title is required")
+  private String title;
 
-    @NotBlank(message = "comment is required")
-    private String comment;
+  @NotBlank(message = "comment is required")
+  private String comment;
 
-    @NotNull(message = "rating is required")
-    @Min(value = 1, message = "rating must be between 1 and 5")
-    @Max(value = 5, message = "rating must be between 1 and 5")
-    private Integer rating;
-    private ProductDto product;
+  @NotNull(message = "rating is required")
+  @Min(value = 1, message = "rating must be between 1 and 5")
+  @Max(value = 5, message = "rating must be between 1 and 5")
+  private Integer rating;
+
+  private ProductDto product;
 }

@@ -13,13 +13,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Review {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String title;
-    private String comment;
-    private Integer rating;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne
-    private  Product product;
+  private String title;
+  private String comment;
+  private Integer rating;
+
+  @ManyToOne private Product product;
 }

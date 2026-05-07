@@ -3,6 +3,7 @@ package com.devworks.service.impl;
 import com.devworks.dto.PagedResponse;
 import com.devworks.dto.ProductDto;
 import com.devworks.dto.ReviewDto;
+import com.devworks.entity.Product;
 import com.devworks.repository.CategoryRepository;
 import com.devworks.repository.ProductRepository;
 import com.devworks.repository.ReviewRepository;
@@ -11,6 +12,9 @@ import com.devworks.service.ProductService;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,8 +39,11 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public PagedResponse<ProductDto> getAllProducts(int page, int size) {
+    Pageable pageable = PageRequest.of(page, size);
+    Page<Product> products = productRepository.findAll(pageable);
+
     return null;
-  }
+  } // toPagedResponse(products.map(this::toDto));  }
 
   @Override
   public ProductDto getProductById(UUID productId) {
@@ -84,5 +91,17 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public List<String> getProductImages(UUID productId) {
     return null;
+  }
+
+  private PagedResponse<ProductDto> toPagedResponse(Page<ProductDto> page) {
+    return new PagedResponse<>(
+        page.getContent(),
+        page.getNumber(),
+        page.getSize(),
+        page.getTotalElements(),
+        page.getTotalPages(),
+        page.getNumberOfElements(),
+        page.isFirst(),
+        page.isLast());
   }
 }

@@ -16,7 +16,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Product extends BaseEntity {
 
   @Id @GeneratedValue @UuidGenerator private UUID id;
 

@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   application:
     name: devworks-product-service
@@ -20,3 +22,9 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+
+imagekit:
+  url-endpoint: https://ik.imagekit.io/imkrdev
+  public-key: public_SXlBbLUH21/CC07nwjUH9zHEKZw=
+  private-key: private_ARCTE6kiDbYumv1ZbBxpB8MggmM=
+  folder: /products

@@ -13,5 +13,6 @@ public class ProductServiceApplication {
 
 // brew services restart postgresql@15
 // createdb product_service
+// brew services stop postgresql@15
 
 // mvn spotless:apply - for code formatting

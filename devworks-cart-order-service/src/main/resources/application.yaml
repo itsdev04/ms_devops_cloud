@@ -22,3 +22,8 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+#services:
+#  product:
+#    base-url=${PRODUCT_SERVICE_URL:http://localhost:8082}
+#  inventory:
+#    base-url=${INVENTORY_SERVICE_URL:http://localhost:8083}

@@ -2,7 +2,8 @@ package com.devworks;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.cloud.openfeign.EnableFeignClients;
+@EnableFeignClients(basePackages = "com.devworks")
 @SpringBootApplication
 public class CartOrderServiceApplication {
 

@@ -13,23 +13,36 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "CART")
-public class Cart {
+@Table(name = "ORDER")
+public class Order {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(nullable = false, unique = true, length = 36)
+  private String orderNumber;
+
   @Column(nullable = false, length = 120)
   private String userId;
 
+  @Column(nullable = false, length = 400)
+  private String shippingAddress;
+
+  @Column(length = 80)
+  private String paymentMethod;
+
   @Enumerated(EnumType.STRING)
   @Column(nullable = false, length = 20)
-  private CartStatus status;
+  private OrderStatus status;
+
+  @Column(nullable = false, precision = 14, scale = 2)
+  private BigDecimal totalAmount;
 
   @Column(nullable = false)
   private Instant createdAt;
@@ -37,14 +50,14 @@ public class Cart {
   @Column(nullable = false)
   private Instant updatedAt;
 
-  @Column private Instant checkedOutAt;
+  @Column private Instant cancelledAt;
 
   @OneToMany(
-      mappedBy = "cart",
+      mappedBy = "order",
       cascade = CascadeType.ALL,
       orphanRemoval = true,
       fetch = FetchType.LAZY)
-  private List<CartItem> items = new ArrayList<>();
+  private List<OrderItem> items = new ArrayList<>();
 
   @PrePersist
   void onCreate() {
@@ -54,7 +67,10 @@ public class Cart {
     }
     updatedAt = now;
     if (status == null) {
-      status = CartStatus.ACTIVE;
+      status = OrderStatus.CONFIRMED;
+    }
+    if (totalAmount == null) {
+      totalAmount = BigDecimal.ZERO;
     }
   }
 
@@ -71,6 +87,14 @@ public class Cart {
     this.id = id;
   }
 
+  public String getOrderNumber() {
+    return orderNumber;
+  }
+
+  public void setOrderNumber(String orderNumber) {
+    this.orderNumber = orderNumber;
+  }
+
   public String getUserId() {
     return userId;
   }
@@ -79,12 +103,36 @@ public class Cart {
     this.userId = userId;
   }
 
-  public CartStatus getStatus() {
+  public String getShippingAddress() {
+    return shippingAddress;
+  }
+
+  public void setShippingAddress(String shippingAddress) {
+    this.shippingAddress = shippingAddress;
+  }
+
+  public String getPaymentMethod() {
+    return paymentMethod;
+  }
+
+  public void setPaymentMethod(String paymentMethod) {
+    this.paymentMethod = paymentMethod;
+  }
+
+  public OrderStatus getStatus() {
     return status;
   }
 
-  public void setStatus(CartStatus status) {
+  public void setStatus(OrderStatus status) {
     this.status = status;
+  }
+
+  public BigDecimal getTotalAmount() {
+    return totalAmount;
+  }
+
+  public void setTotalAmount(BigDecimal totalAmount) {
+    this.totalAmount = totalAmount;
   }
 
   public Instant getCreatedAt() {
@@ -103,19 +151,19 @@ public class Cart {
     this.updatedAt = updatedAt;
   }
 
-  public Instant getCheckedOutAt() {
-    return checkedOutAt;
+  public Instant getCancelledAt() {
+    return cancelledAt;
   }
 
-  public void setCheckedOutAt(Instant checkedOutAt) {
-    this.checkedOutAt = checkedOutAt;
+  public void setCancelledAt(Instant cancelledAt) {
+    this.cancelledAt = cancelledAt;
   }
 
-  public List<CartItem> getItems() {
+  public List<OrderItem> getItems() {
     return items;
   }
 
-  public void setItems(List<CartItem> items) {
+  public void setItems(List<OrderItem> items) {
     this.items = items;
   }
 }

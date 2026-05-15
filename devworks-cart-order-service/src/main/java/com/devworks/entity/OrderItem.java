@@ -8,22 +8,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "CART_ITEM")
-public class CartItem {
+@Table(name = "ORDER_ITEM")
+public class OrderItem {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "cart_id", nullable = false)
-  private Cart cart;
+  @JoinColumn(name = "order_id", nullable = false)
+  private Order order;
 
   @Column(nullable = false)
   private UUID productId;
@@ -43,21 +41,6 @@ public class CartItem {
   @Column(nullable = false, precision = 12, scale = 2)
   private BigDecimal lineTotal;
 
-  @PrePersist
-  @PreUpdate
-  void recalc() {
-    if (quantity == null) {
-      quantity = 1;
-    }
-    if (discountPercent == null) {
-      discountPercent = 0;
-    }
-    if (unitPrice == null) {
-      unitPrice = BigDecimal.ZERO;
-    }
-    lineTotal = unitPrice.multiply(BigDecimal.valueOf(quantity));
-  }
-
   public Long getId() {
     return id;
   }
@@ -66,12 +49,12 @@ public class CartItem {
     this.id = id;
   }
 
-  public Cart getCart() {
-    return cart;
+  public Order getOrder() {
+    return order;
   }
 
-  public void setCart(Cart cart) {
-    this.cart = cart;
+  public void setOrder(Order order) {
+    this.order = order;
   }
 
   public UUID getProductId() {

@@ -1,5 +1,6 @@
 package com.devworks.entity;
 
 public enum CartStatus {
-    ACTIVE
+  ACTIVE,
+  CHECKED_OUT
 }

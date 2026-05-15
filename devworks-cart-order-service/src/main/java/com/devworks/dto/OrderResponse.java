@@ -1,0 +1,19 @@
+package com.devworks.dto;
+
+import com.devworks.entity.OrderStatus;
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.List;
+
+public record OrderResponse(
+    Long id,
+    String orderNumber,
+    String userId,
+    String shippingAddress,
+    String paymentMethod,
+    OrderStatus status,
+    BigDecimal totalAmount,
+    List<OrderItemResponse> items,
+    Instant createdAt,
+    Instant updatedAt,
+    Instant cancelledAt) {}

@@ -9,6 +9,7 @@ import com.devworks.entity.Product;
 import com.devworks.entity.Review;
 import com.devworks.exception.InvalidRequestException;
 import com.devworks.exception.ResourceNotFoundException;
+import com.devworks.mapper.ProductMapper;
 import com.devworks.repository.CategoryRepository;
 import com.devworks.repository.ProductRepository;
 import com.devworks.repository.ReviewRepository;
@@ -32,21 +33,26 @@ public class ProductServiceImpl implements ProductService {
   private final CategoryRepository categoryRepository;
   private final ReviewRepository reviewRepository;
   private final ImageKitStorageService imageKitStorageService;
+  private final ProductMapper productMapper;
 
   public ProductServiceImpl(
       ProductRepository productRepo,
       CategoryRepository categoryRepo,
       ReviewRepository reviewRepo,
-      ImageKitStorageService imageKitStorageService) {
+      ImageKitStorageService imageKitStorageService,
+      ProductMapper productMapper) {
     this.productRepository = productRepo;
     this.categoryRepository = categoryRepo;
     this.reviewRepository = reviewRepo;
     this.imageKitStorageService = imageKitStorageService;
+    this.productMapper = productMapper;
   }
 
   @Override
   public PagedResponse<ProductDto> getAllProducts(int page, int size) {
-    return null;
+    Pageable pageable = PageRequest.of(page, size);
+    Page<Product> productPage = productRepository.findAll(pageable);
+    return toPagedResponse(productPage.map(this::toDto));
   }
 
   @Override

@@ -1,3 +1,23 @@
+server:
+  port: 8079
+
 spring:
   application:
     name: devworks-config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${GITHUB_URL:https://github.com/itsdev04/ms_devops_cloud_config_server.git}
+          username: ${GITHUB_USERNAME:itsdev04}
+          password: ${GITHUB_PASSWORD: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}
+          defaultLabel: main
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

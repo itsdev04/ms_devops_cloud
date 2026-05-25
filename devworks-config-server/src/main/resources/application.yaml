@@ -11,7 +11,7 @@ spring:
         git:
           uri: ${GITHUB_URL:https://github.com/itsdev04/ms_devops_cloud_config_server.git}
           username: ${GITHUB_USERNAME:itsdev04}
-          password: ${GITHUB_PASSWORD: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}
+          password: ${GITHUB_PAT}
           defaultLabel: main
 
 

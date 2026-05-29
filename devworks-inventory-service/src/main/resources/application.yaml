@@ -1,12 +1,11 @@
 server:
-  port: 8082
-
+  port: 8084
 spring:
   application:
-    name: devworks-cart-order-service
+    name: devworks-inventory-service
 
   datasource:
-    url: jdbc:mysql://localhost:3307/cart_order_service?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://localhost:3308/inventory_service?allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -25,8 +24,3 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
-#services:
-#  product:
-#    base-url=${PRODUCT_SERVICE_URL:http://localhost:8082}
-#  inventory:
-#    base-url=${INVENTORY_SERVICE_URL:http://localhost:8083}

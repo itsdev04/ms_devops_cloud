@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="devworks-ai-service" />
+        <module name="devworks-config-server" />
+        <module name="devworks-discovery-service" />
+        <module name="devworks-cart-order-service" />
+        <module name="devworks-user-service" />
+        <module name="devworks-product-service" />
+        <module name="devworks-inventory-service" />
+        <module name="devworks-api-gateway-service" />
+        <module name="devworks-payment-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="devworks-ai-service" options="-parameters" />
+      <module name="devworks-api-gateway-service" options="-parameters" />
+      <module name="devworks-cart-order-service" options="-parameters" />
+      <module name="devworks-config-server" options="-parameters" />
+      <module name="devworks-discovery-service" options="-parameters" />
+      <module name="devworks-inventory-service" options="-parameters" />
+      <module name="devworks-payment-service" options="-parameters" />
+      <module name="devworks-product-service" options="-parameters" />
+      <module name="devworks-user-service" options="-parameters" />
+    </option>
+  </component>
+</project>

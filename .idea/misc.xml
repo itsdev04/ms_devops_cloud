@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/devworks-ai-service/pom.xml" />
+        <option value="$PROJECT_DIR$/devworks-user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/devworks-config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/devworks-payment-service/pom.xml" />
+        <option value="$PROJECT_DIR$/devworks-product-service/pom.xml" />
+        <option value="$PROJECT_DIR$/devworks-discovery-service/pom.xml" />
+        <option value="$PROJECT_DIR$/devworks-inventory-service/pom.xml" />
+        <option value="$PROJECT_DIR$/devworks-cart-order-service/pom.xml" />
+        <option value="$PROJECT_DIR$/devworks-api-gateway-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="24" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

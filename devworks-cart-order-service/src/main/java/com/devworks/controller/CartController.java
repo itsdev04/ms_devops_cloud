@@ -5,6 +5,7 @@ import com.devworks.dto.CartResponse;
 import com.devworks.dto.UpdateCartItemRequest;
 import com.devworks.service.CartService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Validated
+@Slf4j
 @RequestMapping("/api/carts")
 public class CartController {
 
@@ -29,6 +31,8 @@ public class CartController {
 
   @GetMapping("/{userId}")
   public CartResponse getCart(@PathVariable String userId) {
+
+    log.info("CartController:: Request received to get cart for userId {}",userId);
     return cartService.getCart(userId);
   }
 

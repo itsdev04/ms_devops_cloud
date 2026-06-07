@@ -8,12 +8,15 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import java.util.UUID;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/products")
 @Validated
@@ -33,6 +36,7 @@ public class ProductController {
           @Min(value = 1, message = "size must be greater than 0")
           @Max(value = 100, message = "size must be at most 100")
           int size) {
+    log.info("ProductController:: Request received for getting all products");
     return ResponseEntity.ok(productService.getAllProducts(page, size));
   }
 

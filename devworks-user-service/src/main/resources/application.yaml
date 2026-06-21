@@ -1,3 +1,7 @@
 spring:
-  application:
-    name: devworks-user-service
+application:
+  name: devworks-user-service
+  profiles:
+    active: dev
+  config:
+    import: configserver:${CONFIG_SERVER_URL:http://localhost:8079}

@@ -1,6 +1,14 @@
 version: '3.8'
 
 services:
+  userservicedb:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: user_service
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3309:3306"
   kafka:
     image: apache/kafka:3.7.0
     container_name: kafka-broker
